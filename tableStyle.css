@@ -1,0 +1,66 @@
+/*
+Chao Lin
+Maggie Koella
+Liz Zuniga
+*/
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v10/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+#users{
+  border-collapse:collapse;
+  border: solid black 1px;
+  width: 90%;
+  margin: 7% auto;
+}
+
+#users td, #users th{
+  text-align:left;
+  padding: .25em;
+  border: solid black 1px;
+}
+
+#users tr{
+  border:solid black 1px;
+  text-align:center;
+}
+
+#users tr:nth-child(even){
+  background-color:#A7DBD8;
+ }
+
+ #users tr:nth-child(odd){
+    background-color:#c9e9e7;
+ }
+
+#users tr:hover{
+  background-color:#E0E4CC;
+}
+
+#users th{
+  padding-top:1em;
+  padding-bottom:1em;
+  background-color:#E0E4CC;
+  color:black;
+  border: solid black 1px;
+  text-align: center;
+}
+
+#note{
+  width:90%;
+  margin: 10% auto;
+  text-align:center;
+  /*color:#FA6900;*/
+  color:white;
+  font-family: 'Raleway',sans-serif;
+  font-weight:bold;
+  letter-spacing: 0.2em;
+  font-size:2em;
+  text-shadow:0 0 5px black;
+}
+

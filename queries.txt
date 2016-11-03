@@ -1,0 +1,98 @@
+/*
+Chao Lin
+Liz Zuniga
+Maggie Koella
+CS 284
+Check Point 3: Queries
+*/
+
+/* 1) List the name and contact info for all smoke-friendly drivers heading to the northwest.*/
+SELECT DISTINCT fName,lName,phone,email FROM userInfo, contact, destination, whoGoWhere, region, questions, yesOrNoAnswer, response, driverOrPassenger
+	WHERE destination.destinationId = whoGoWhere.destinationId 
+	AND userInfo.userId = whoGoWhere.userId
+	AND contact.userId = userInfo.userId
+	AND destination.regionId = region.regionId
+	AND region.name = "northwest"
+	AND questions.questionId = response.questionId 
+	and yesOrNoAnswer.y_n_Id = response.y_n_Id
+	AND questions.question = "smokeQ"
+	AND response.y_n_Id = "2"
+	AND response.userId = userInfo.userId
+	AND userInfo.userTypeId = driverOrPassenger.userTypeId
+	AND driverOrPassenger.userType = "driver";
+
+/* 2) List the name and contact info for all non-smoking passengers with less than 3 bags/luggage going to the southeast.*/
+SELECT DISTINCT fName,lName,phone,email FROM userInfo, contact,destination, whoGoWhere, region, questions, numericAnswer, response, driverOrPassenger
+	WHERE userInfo.userId = contact.userId
+	AND userInfo.userTypeId = driverOrPassenger.userTypeId
+	AND driverOrPassenger.userType = "passenger"
+	AND destination.destinationId = whoGoWhere.destinationId 
+	AND userInfo.userId = whoGoWhere.userId
+	AND destination.regionId = region.regionId
+	AND region.name = "Southeast"
+	AND questions.question = "luggage"
+	AND questions.questionId = response.questionId
+	AND numericAnswer.numId = response.numId
+	AND numericAnswer.answer < 3
+	AND response.userId = userInfo.userId;
+
+/* 3) List the names of all people, drivers and passengers, going to the southeast, but with the restriction that the drivers must be leaving before May 7th.*/
+SELECT fName, lName FROM userInfo, whoGoWhere, region, destination, departure, whoDepartWhen
+	WHERE whoGoWhere.userId = userInfo.userId
+	AND whoGoWhere.destinationId = destination.destinationId
+	AND destination.regionId = region.regionId
+	AND region.name = "Southeast"
+    AND whoDepartWhen.dateId = departure.dateId
+    AND whoDepartWhen.userId = userInfo.userId
+    AND date(departure.departureDate) < '2016-05-07';
+
+/* 4) Give the name and contact info of all passengers who is smoke-friendly and are willing to help drive.  */
+SELECT DISTINCT fName, lName, phone,email FROM userInfo, contact, questions, yesOrNoAnswer,response
+	WHERE userInfo.userId = contact.userId
+	AND questions.question = ("smokeQ" && "driverQ")
+	AND questions.questionId = response.questionId
+	AND yesOrNoAnswer.y_n_Id = response.y_n_Id
+	AND yesOrNoAnswer.answer = "yes";
+
+/* 5) Give the name and contact info of all male drivers heading southwest who are smoke-friendly.*/
+SELECT DISTINCT fName, lName, phone, email FROM userInfo, contact, destination, region, whoGoWhere, questions, yesOrNoAnswer, response, driverOrPassenger
+	WHERE whoGoWhere.destinationId = destination.destinationId
+	AND whoGoWhere.userId = userInfo.userId
+	ANd contact.userId = userInfo.userId
+	AND destination.regionId = region.regionId
+	AND region.name = "Southwest"
+	AND userInfo.userTypeId = driverOrPassenger.userTypeId
+	AND driverOrPassenger.userType = "driver"
+	AND questions.question = "smokeQ"
+	AND questions.questionId = response.questionId
+	AND yesOrNoAnswer.y_n_Id = response.y_n_Id
+	AND yesOrNoAnswer.answer= "yes"
+	AND response.userId = userInfo.userId;
+
+/* 6) Give user a list of all passengers who are going southeast and willing to help drive.*/
+SELECT DISTINCT fName, lName FROM userInfo, destination, region, whoGoWhere, questions, yesOrNoAnswer, response, driverOrPassenger
+	WHERE whoGoWhere.userId = userInfo.userId
+	AND whoGoWhere.destinationId = destination.destinationId
+	AND destination.regionId = region.regionId
+    AND region.name = "Southeast"
+    AND userInfo.userTypeId = driverOrPassenger.userTypeId
+    AND driverOrPassenger.userType = "passenger"
+    AND questions.question = "driverQ"
+    AND questions.questionId = response.questionId
+    AND yesOrNoAnswer.y_n_Id = response.y_n_Id
+    AND yesOrNoAnswer.answer = "yes"
+    AND response.userId = userInfo.userId;
+
+/* 7) List the names of all passengers going to the midwest who are smoke-friendly */
+SELECT DISTINCT fName, lName FROM userInfo, destination, region, whoGoWhere, questions, yesOrNoAnswer, response, driverOrPassenger
+	WHERE whoGoWhere.userId = userInfo.userId
+	AND whoGoWhere.destinationId = destination.destinationId
+	AND destination.regionId = region.regionId
+    AND region.name = "midwest"
+    AND userInfo.userTypeId = driverOrPassenger.userTypeId
+    AND driverOrPassenger.userType = "passenger"
+    AND questions.question = "smokeQ"
+    AND questions.questionId = response.questionId
+    AND yesOrNoAnswer.y_n_Id = response.y_n_Id
+    AND yesOrNoAnswer.answer = "yes"
+    AND response.userId = userInfo.userId;

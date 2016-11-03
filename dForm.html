@@ -1,0 +1,121 @@
+<!--
+Chao Lin
+Maggie Koella
+Liz Zuniga
+-->
+
+<html>
+  <head>
+   <title>Drivers</title>
+
+   <link rel="stylesheet" href="pStyle.css"
+   media="only screen and (min-width: 1050px)"/>
+  <link rel="stylesheet" href="pPhone.css"  
+   media="only screen and (max-width: 1051px) 
+   and (min-width: 630px) "/>
+  <link rel="stylesheet" href="miniPhone.css"  
+   media="only screen and (max-width: 629px)"/>
+
+  <script src="validate.js"></script>
+
+  <script>
+    function validate(form){
+      fail = validateFirstname(form.fName.value)
+      fail += validateLastname(form.lName.value)
+      fail += validatePhone(form.phone.value)
+      fail += validateCity(form.city.value)
+      fail += validateEmail(form.email.value)
+      fail += validateState(form.state.value)
+      fail += validateCampus(form.campus.value)
+      fail += validateDeparture(form.departure.value)
+      fail += validateSmokeQ(form.smokeQ.value)
+      fail += validatePetQ(form.petQ.value)
+
+      if(fail==""){
+        return true;
+      }else{ 
+        alert(fail); 
+        return false;
+      }
+    }
+
+  </script>
+
+  </head>
+  <body id="dBody">
+
+    <div id="dheader">
+      <div class="container">
+        <div  class="title">
+          Campus Commute
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pForm.html">Passenger Sign-Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="dinstruContainer">
+      <p class="instruction">Sign up <br>to be a Driver <br> and <br> GIVE A RIDE!</p>
+    </div>
+
+    <div id="dFormContainer">
+    <form id="dForm" action="driver.php" method="post" onsubmit="return validate(this)"><pre>
+
+      <b>Personals Information:</b>
+
+      First Name: <input type = "text" name = "fName">
+
+       Last Name: <input type = "text" name = "lName">
+
+           Phone: <input type = "text" name = "phone" placeholder = "800-000-000">
+
+           Email: <input type = "text" name= "email" placeholder="example@email.com">
+
+      <b>Destination:</b>
+
+          Region: <select name = "region" size = "1">
+           <option value = "Northeast">Northeast</option>
+           <option value = "Midwest">Midwest</option>
+           <option value = "Southeast">Southeast</option>
+           <option value = "Southwest">Southwest</option>
+           <option value = "West">West</option>
+           <option value = "Northwest">Northwest</option>
+           </select>
+
+            City: <input type = "text" name = "city">
+
+           State: <input type = "text" name = "state">
+
+      <b>Additional Information:</b>
+
+          Campus: <input type = "text" name = "campus">
+
+  Departure Date: <input type = "date" name= "departure" placeholder="yyyy-mm-dd">
+
+ Type of Vehicle: <select type= "text" name="vehicleType" size='1'>
+                  <option value="suv">SUV</option>
+                  <option value="truck">Truck</option>
+                  <option value="sedan">Sedan</option>
+                  <option value="van">Van</option>
+                  <option value="convertible">Convertible</option>
+                  <option value="coupe">Coupe</option>
+                  <option value="wagon">Wagon</option>
+                  <option value="other">Other</option>
+                 </select>
+
+    Are you traveling with pets?
+    <input type="radio" name='petQ' value='yes'> Yes    <input type="radio" name='petQ' value='no'> No
+
+    Are you willing to travel with smokers?
+    <input type="radio" name='smokeQ' value='yes'> Yes    <input type="radio" name='smokeQ' value='no'> No
+
+          <button class="submit">Submit</button>
+    </pre></form>
+    </div>
+
+  </body>
+</html>

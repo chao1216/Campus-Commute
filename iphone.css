@@ -1,0 +1,113 @@
+/*
+Chao Lin
+Maggie Koella
+Liz Zuniga
+*/
+
+
+
+/*----- <link rel="stylesheet" href="style.css"
+   media="screen and (min-width: 551px)"/>
+  <link rel="stylesheet" href="iphone.css"  
+   media="only screen and (max-width: 550px)"/> ------*/
+/*-- replace your orginal link rel with the above. --*/ 
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v10/yQiAaD56cjx1AooMTSghGfY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v10/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+body{
+  background:#A7DBA9;
+  margin:auto;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+a{
+  text-decoration: none;
+  color:white;
+}
+
+li{     
+  margin-left: -40px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  list-style: none;	
+}
+
+.title{ 
+  width: 50%;
+  color:white;
+  margin:1em 1em 0em 1em;
+  color:#FA6900;
+  float:left;
+  font-family: 'Raleway',sans-serif;
+  font-weight:bold;
+  letter-spacing: 0.2em;
+  font-size:2em;
+}
+
+.nav{   
+  width:20%;
+  float: right;
+  border:solid white 0.1em;
+  font-family: sans-serif; 
+  font-size:0.8em;
+  text-align: center;
+  font-family: 'Raleway',sans-serif;
+  margin-right: 10px;
+}
+
+#slogan{
+  width:90%;
+  margin:1em 0.1em 1em 0.1em;
+  border:solid white 0.2em;  /* lkd - yuck! */
+  font-size: 2em;
+  color:white;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 3px black;
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  float:left;
+}
+
+.mainBtn{
+  width:45%;
+  height:40px;
+  background:#F38630;
+  font-size: 15px;
+  font-weight: bold;
+  color:white;
+  letter-spacing: 0.2em;
+  border-radius: 10px;
+  border: solid white 0.1em;
+}
+
+.mainBtn:hover{
+  opacity:0.5;
+}
+
+#passengerBtn{
+  float:left;
+}
+
+#driverBtn{
+  float:right;
+}
+
+
+
+
